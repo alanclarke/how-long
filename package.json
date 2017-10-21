@@ -1,6 +1,6 @@
 {
   "name": "how-long",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "break down the difference between two js dates into customisable units",
   "main": "index.js",
   "directories": {
