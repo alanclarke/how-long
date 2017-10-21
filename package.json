@@ -1,0 +1,22 @@
+{
+  "name": "how-long",
+  "version": "1.0.0",
+  "description": "break down the difference between two js dates into customisable units",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": {
+    "name": "Alan Clarke",
+    "email": "hi@alz.io",
+    "url": "http://alz.io"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1"
+  }
+}
