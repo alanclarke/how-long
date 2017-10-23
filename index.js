@@ -16,7 +16,7 @@ module.exports = function howLong (date1, date2, selected) {
 
   if (selected) {
     units = allUnits.filter(function (u) {
-      return selected.includes(u)
+      return selected.indexOf(u) > -1
     })
   }
 
