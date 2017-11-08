@@ -31,9 +31,16 @@ module.exports = function howLong (date1, date2, selected) {
         break
       case 'months':
         results.months = 0
-        while (current.getMonth() < next.getMonth()) {
+        while (current.getFullYear() < next.getFullYear() || current.getMonth() < next.getMonth()) {
           results.months++
           current.setMonth(current.getMonth() + 1)
+          if (current.getMonth() === next.getMonth() && current.getFullYear() === next.getFullYear()) {
+            if (current.getDate() > next.getDate()) {
+              current.setMonth(current.getMonth() - 1)
+              results.months--
+              break
+            }
+          }
         }
         break
       default:

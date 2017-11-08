@@ -170,5 +170,11 @@ describe('how long', function () {
       weeks: 1,
       days: 0
     })
+
+    expect(howLong(new Date(2017, 11, 10), new Date(2018, 2, 1), ['months', 'weeks', 'days'])).to.eql({
+      months: 2,
+      weeks: 2,
+      days: 5
+    })
   })
 })
