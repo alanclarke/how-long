@@ -16,9 +16,7 @@ describe('how long', function () {
     for (var i = 0; i < 100; i++) {
       var date2 = new Date(date1.getTime())
       date2.setFullYear(date1.getFullYear() + i)
-      expect(howLong(date1, date2, ['years'])).to.eql({
-        years: i
-      })
+      expect(howLong(date1, date2, ['years'])).to.eql({ years: i })
     }
   })
 
@@ -27,9 +25,7 @@ describe('how long', function () {
     for (var i = 0; i < 100; i++) {
       var date2 = new Date(date1.getTime())
       date2.setMonth(date1.getMonth() + i)
-      expect(howLong(date1, date2, ['months'])).to.eql({
-        months: i
-      })
+      expect(howLong(date1, date2, ['months'])).to.eql({ months: i })
     }
   })
 
@@ -37,9 +33,7 @@ describe('how long', function () {
     var date1 = new Date()
     for (var i = 0; i < 100; i++) {
       var date2 = new Date(date1.getTime() + (ms.weeks * i))
-      expect(howLong(date1, date2, ['weeks'])).to.eql({
-        weeks: i
-      })
+      expect(howLong(date1, date2, ['weeks'])).to.eql({ weeks: i })
     }
   })
 
@@ -47,9 +41,7 @@ describe('how long', function () {
     var date1 = new Date()
     for (var i = 0; i < 100; i++) {
       var date2 = new Date(date1.getTime() + (ms.days * i))
-      expect(howLong(date1, date2, ['days'])).to.eql({
-        days: i
-      })
+      expect(howLong(date1, date2, ['days'])).to.eql({ days: i })
     }
   })
 
@@ -57,9 +49,7 @@ describe('how long', function () {
     var date1 = new Date()
     for (var i = 0; i < 100; i++) {
       var date2 = new Date(date1.getTime() + (ms.hours * i))
-      expect(howLong(date1, date2, ['hours'])).to.eql({
-        hours: i
-      })
+      expect(howLong(date1, date2, ['hours'])).to.eql({ hours: i })
     }
   })
 
@@ -67,9 +57,7 @@ describe('how long', function () {
     var date1 = new Date()
     for (var i = 0; i < 100; i++) {
       var date2 = new Date(date1.getTime() + (ms.minutes * i))
-      expect(howLong(date1, date2, ['minutes'])).to.eql({
-        minutes: i
-      })
+      expect(howLong(date1, date2, ['minutes'])).to.eql({ minutes: i })
     }
   })
 
@@ -77,9 +65,7 @@ describe('how long', function () {
     var date1 = new Date()
     for (var i = 0; i < 100; i++) {
       var date2 = new Date(date1.getTime() + (ms.seconds * i))
-      expect(howLong(date1, date2, ['seconds'])).to.eql({
-        seconds: i
-      })
+      expect(howLong(date1, date2, ['seconds'])).to.eql({ seconds: i })
     }
   })
 
@@ -87,9 +73,7 @@ describe('how long', function () {
     var date1 = new Date()
     for (var i = 0; i < ms.weeks; i += ms.hours) {
       var date2 = new Date(date1.getTime() + i)
-      expect(howLong(date1, date2, ['milliseconds'])).to.eql({
-        milliseconds: i
-      })
+      expect(howLong(date1, date2, ['milliseconds'])).to.eql({ milliseconds: i })
     }
   })
 
@@ -114,9 +98,8 @@ describe('how long', function () {
   it('should count some of the things', function () {
     var date1 = new Date()
     var date2 = new Date(date1.getTime() + 61001)
-    expect(howLong(date1, date2, 'seconds')).to.eql({
-      seconds: 61
-    })
+
+    expect(howLong(date1, date2, 'seconds')).to.eql({ seconds: 61 })
 
     expect(howLong(date1, date2, ['seconds', 'minutes'])).to.eql({
       seconds: 1,
@@ -128,21 +111,19 @@ describe('how long', function () {
       minutes: 1,
       milliseconds: 1
     })
+
     date2 = new Date(date1.getTime() + ms.days)
 
-    expect(howLong(date1, date2, ['hours'])).to.eql({
-      hours: 24
-    })
+    expect(howLong(date1, date2, ['hours'])).to.eql({ hours: 24 })
 
     expect(howLong(date1, date2, ['days', 'hours'])).to.eql({
       days: 1,
       hours: 0
     })
+
     date2 = new Date(date1.getTime() + ms.weeks)
 
-    expect(howLong(date1, date2, ['days'])).to.eql({
-      days: 7
-    })
+    expect(howLong(date1, date2, ['days'])).to.eql({ days: 7 })
 
     expect(howLong(date1, date2, ['weeks', 'days'])).to.eql({
       weeks: 1,

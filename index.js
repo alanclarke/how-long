@@ -29,7 +29,8 @@ module.exports = function howLong (date1, date2, selected) {
           current.setFullYear(current.getFullYear() + 1)
           results.years++
         }
-        if (current.getFullYear() === next.getFullYear() && current.getMonth() > next.getMonth()) {
+        // If there is less than a full year difference, we will have gone over
+        if (current.getTime() > next.getTime()) {
           current.setFullYear(current.getFullYear() - 1)
           results.years--
         }
@@ -41,18 +42,17 @@ module.exports = function howLong (date1, date2, selected) {
           results.months++
           current.setMonth(current.getMonth() + 1)
         }
-        if (current.getMonth() === next.getMonth() && current.getFullYear() === next.getFullYear()) {
-          if (current.getDate() > next.getDate()) {
-            current.setMonth(current.getMonth() - 1)
-            results.months--
-          }
+        // If there is less than a full month difference, we will have gone over
+        if (current.getTime() > next.getTime()) {
+          current.setMonth(current.getMonth() - 1)
+          results.months--
         }
         break
       default:
         var diff = next.getTime() - current.getTime()
         results[unit] = Math.floor(diff / ms[unit])
-        var addons = ms[unit] * results[unit]
-        current.setTime(current.getTime() + addons)
+        var remainder = ms[unit] * results[unit]
+        current.setTime(current.getTime() + remainder)
         break
     }
   }
