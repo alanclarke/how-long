@@ -26,8 +26,12 @@ module.exports = function howLong (date1, date2, selected) {
       case 'years':
         results.years = 0
         while (current.getFullYear() < next.getFullYear()) {
-          results.years++
           current.setFullYear(current.getFullYear() + 1)
+          results.years++
+        }
+        if (current.getFullYear() === next.getFullYear() && current.getMonth() > next.getMonth()) {
+          current.setFullYear(current.getFullYear() - 1)
+          results.years--
         }
         break
       // Months don't have a fixed number of milliseconds, so we need to iterate
@@ -36,12 +40,11 @@ module.exports = function howLong (date1, date2, selected) {
         while (current.getFullYear() < next.getFullYear() || current.getMonth() < next.getMonth()) {
           results.months++
           current.setMonth(current.getMonth() + 1)
-          if (current.getMonth() === next.getMonth() && current.getFullYear() === next.getFullYear()) {
-            if (current.getDate() > next.getDate()) {
-              current.setMonth(current.getMonth() - 1)
-              results.months--
-              break
-            }
+        }
+        if (current.getMonth() === next.getMonth() && current.getFullYear() === next.getFullYear()) {
+          if (current.getDate() > next.getDate()) {
+            current.setMonth(current.getMonth() - 1)
+            results.months--
           }
         }
         break
