@@ -111,7 +111,7 @@ describe('how long', function () {
     })
   })
 
-  it('should respect options', function () {
+  it('should count some of the things', function () {
     var date1 = new Date()
     var date2 = new Date(date1.getTime() + 61001)
     expect(howLong(date1, date2, 'seconds')).to.eql({
